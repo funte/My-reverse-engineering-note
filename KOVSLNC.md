@@ -20,7 +20,7 @@
   | _List                 | 8h        | 10h     | 初值长度 `0` |
   | _Vec                  | 18h       | 18h     | 初值 `_List._Unchecked_end()` |
   | _Mask                 | 30h       | 8h      | 初值 `_Buckets-1`, 默认 `7`  |
-  | _Maxidx               | 38h       | 40h     | 初值 `_Buckets`, 默认 `8` |
+  | _Maxidx               | 38h       | 8h      | 初值 `_Buckets`, 默认 `8` |
 * 甄别存储数据类型  
   在容器 `unordered_map` 中, 数据以键值对的形式 `using value_type = pair<const _Kty, _Ty>;` 存储在成员 `_List` 的元素节点中([STL - 识别 std::list 对象](./INCBWH3.md)), 所以想要从茫茫多的汇编代码中寻出存储的数据类型首先需要找到函数 `std::unordered_map::operator[]` 对应的反汇编代码, 观察这个函数:  
   ```c++
